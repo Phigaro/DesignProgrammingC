@@ -1,9 +1,8 @@
-#include <stdio.h>
-#include <iostream>
-using namespace std;
+#pragma once
+#include "Application.h"
 
 int main(void) {
-	printf("Project on Console Application\n");
-	system("pause");
+	Application App;
+	App.run();
 	return 0;
 }
