@@ -3,9 +3,14 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Location.h"
+#include "NodeLoca.h"
 #include "Pokemon.h"
+#include "Graph_Matrix.h"
+#include "Dijkstra.h"
 using namespace std;
+
+#define NODE_CNT 100		// 노드의 갯수
+#define NODE_IDTCNT 12		// 노드 식별자의 가짓수
 
 struct s_Loca_Identifier {
 	int loca_index;
@@ -19,9 +24,10 @@ struct s_Loca_Data {
 
 class Application {
 private:
-	int Route[100][100];					// Route (include Time)
-	s_Loca_Data Loca_Data[100];				// Location Data
-	s_Loca_Identifier  Loca_Identifier[12];	// Location Identifier Data
+	int Route[NODE_CNT][NODE_CNT];					// Route (include Time)
+	s_Loca_Data Loca_Data[NODE_CNT];				// NodeLoca Data
+	s_Loca_Identifier  Loca_Identifier[NODE_IDTCNT];	// NodeLoca Identifier Data
+	vector<NodeLoca> NodeInfo;
 
 public:
 	Application();
@@ -31,4 +37,5 @@ public:
 	int Load_route_data();
 	int Load_Loca_Identifier();
 	int Load_Loca_Data();
+	int Combine_NodeInfo();
 };

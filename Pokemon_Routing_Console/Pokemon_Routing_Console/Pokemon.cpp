@@ -20,8 +20,8 @@ int Pokemon::get_State() {
 	return State;
 }
 
-int Pokemon::get_Location_Id() {
-	return Location_Id;
+int Pokemon::get_NodeLoca_Id() {
+	return NodeLoca_Id;
 }
 
 void Pokemon::set_Id(int _Id) {
@@ -36,6 +36,6 @@ void Pokemon::set_State(int _State) {
 	State = _State;
 }
 
-void Pokemon::set_Location_Id(int _Location_Id) {
-	Location_Id = _Location_Id;
+void Pokemon::set_NodeLoca_Id(int _NodeLoca_Id) {
+	NodeLoca_Id = _NodeLoca_Id;
 }

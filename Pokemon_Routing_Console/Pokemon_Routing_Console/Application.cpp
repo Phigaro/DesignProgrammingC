@@ -10,8 +10,17 @@ Application::~Application() {
 
 void Application::run() {
 	printf("Project on Console Application\n");
-
 	Load_all_data();
+	Graph MyGraph(NODE_CNT);
+	MyGraph.Set_Matrix(*Route);
+	Combine_NodeInfo();
+
+	Dijkstra Dij(*Route, NODE_CNT);
+	Dij.Set_NodeInfo(NodeInfo);
+	Dij.Dijkstra_init();
+	Dij.Dijkstra_run();
+
+
 
 	system("pause");
 }
@@ -25,8 +34,8 @@ int Application::Load_route_data() {
 	ifstream infile;
 	int row_idx = 0;
 	int col_idx = 0;
-	int max_row_num = 100;
-	int max_col_num = 100;
+	int max_row_num = NODE_CNT;
+	int max_col_num = NODE_CNT;
 	int cur_data = 0;
 
 	infile.open("../Data/위치별소모시간.txt");
@@ -50,7 +59,7 @@ int Application::Load_Loca_Identifier() {
 	int row_idx = 0;
 	int col_idx = 0;
 	int max_row_num = 3;
-	int max_col_num = 12;
+	int max_col_num = NODE_IDTCNT;
 	int N_cur_data = 0;
 	string S_cur_data = "";
 	int count = 0;
@@ -58,7 +67,6 @@ int Application::Load_Loca_Identifier() {
 	infile.open("../Data/위치식별자.txt");
 
 	while (!infile.eof()) {
-
 		switch (count % 3) {
 		case 0:
 			infile >> N_cur_data;
@@ -88,7 +96,7 @@ int Application::Load_Loca_Data() {
 	ifstream infile;
 	int col_idx = 0;
 	int max_row_num = 2;
-	int max_col_num = 100;
+	int max_col_num = NODE_CNT;
 	int N_cur_data = 0;
 	string S_dummy_data = "";
 
@@ -106,5 +114,17 @@ int Application::Load_Loca_Data() {
 	}
 	infile.close();
 	return 1;
+}
+
+int Application::Combine_NodeInfo() {
+	for (int i = 0; i < NODE_CNT; i++) {
+		NodeLoca CurNode;
+		CurNode.set_Id(Loca_Data[i].loca_index);
+		CurNode.set_Poke_Id(Loca_Data[i].Identifier);
+		CurNode.set_Poke_Name(Loca_Identifier[CurNode.get_Poke_Id()].poke_name);
+		NodeInfo.push_back(CurNode);
+	}
+
+	return 0;
 }
 

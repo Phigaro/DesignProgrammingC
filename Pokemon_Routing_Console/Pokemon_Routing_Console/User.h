@@ -3,7 +3,7 @@
 class User {
 private:
 	int Poket_Ball_Num;		// Number Of Poket ball
-	int Location_Id;		// Current Location of User
+	int NodeLoca_Id;		// Current NodeLoca of User
 	int Pokemon_List;		// Catched Pokemon List
 	int Marked_Pokeon_Id;	// Pokemon Mark
 
