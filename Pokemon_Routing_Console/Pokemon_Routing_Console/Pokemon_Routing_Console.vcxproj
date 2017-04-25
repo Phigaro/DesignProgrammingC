@@ -113,6 +113,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="Graph_Matrix.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="NodeLoca.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pokemon.cpp" />
@@ -122,9 +123,14 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="Graph_Matrix.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="NodeLoca.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Pokemon.h" />
+    <ClInclude Include="Pr01Algorithm.h" />
+    <ClInclude Include="Pr02Algorithm.h" />
+    <ClInclude Include="Pr03Algorithm.h" />
+    <ClInclude Include="PrSolveAlgorithms.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +140,9 @@
     <Text Include="..\Data\위치별소모시간.txt" />
     <Text Include="..\Data\위치식별자.txt" />
     <Text Include="..\Data\위치정보.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

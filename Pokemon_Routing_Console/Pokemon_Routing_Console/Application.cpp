@@ -10,18 +10,50 @@ Application::~Application() {
 
 void Application::run() {
 	printf("Project on Console Application\n");
+	
+	// 데이터 받아옴
 	Load_all_data();
+
+	// Main으로 다룰 인접행렬 및, Node 정보 셋팅
 	Graph MyGraph(NODE_CNT);
 	MyGraph.Set_Matrix(*Route);
 	Combine_NodeInfo();
 
+	// 어플리케이션 시작
+	interface.PrintMainMenu();
+	Con_Flag = interface.InputCommand();
+	switch (CurInput)
+	{
+	case 1:
+		interface.PrintTimeMenu();
+		Con_Time;
+		interface.PrintPokeMenu();
+		Con_PokeId;
+		break;
+	case 2:
+		interface.PrintTimeMenu();
+		Con_Time;
+		break;
+	case 3:
+		break;
+	default:
+		break;
+	}
+
+	// PrSolveAlgorithm(int Con_Time, int Con_PokeId, int Con_Flag);
+
+	// 최소 경로를 가져오는 알고리즘.
 	Dijkstra Dij(*Route, NODE_CNT);
 	Dij.Set_NodeInfo(NodeInfo);
 	Dij.Dijkstra_init();
-	Dij.Dijkstra_run();
+	int i;
+	int j;
+	cin >> i;
+	cin >> j;
+	Dij.Dijkstra_run(i,j);
 
 
-
+	printf("\n");
 	system("pause");
 }
 

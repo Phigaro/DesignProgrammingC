@@ -7,6 +7,8 @@
 #include "Pokemon.h"
 #include "Graph_Matrix.h"
 #include "Dijkstra.h"
+#include "Interface.h"
+
 using namespace std;
 
 #define NODE_CNT 100		// ³ëµåÀÇ °¹¼ö
@@ -28,6 +30,12 @@ private:
 	s_Loca_Data Loca_Data[NODE_CNT];				// NodeLoca Data
 	s_Loca_Identifier  Loca_Identifier[NODE_IDTCNT];	// NodeLoca Identifier Data
 	vector<NodeLoca> NodeInfo;
+
+	Interface interface;
+	int Con_Time;
+	int Con_PokeId;
+	int Con_Flag;
+	int CurInput;
 
 public:
 	Application();

@@ -3,6 +3,7 @@
 Dijkstra::Dijkstra() {
 	num_Node = 100;
 	CurNode = 0;
+	init_flag = false;
 }
 
 Dijkstra::Dijkstra(int* _Matrix, int _num_node) {
@@ -42,9 +43,11 @@ void Dijkstra::Set_NodeNum(int _num_Node) {
 }
 
 void Dijkstra::Dijkstra_init() {
-
-	std::cin >> start;
-	std::cin >> end;
+	if (init_flag) {
+		delete CheckNode;
+		delete Distance;
+		delete history;
+	}
 
 	Min_Weight = 0;
 	CheckNode = new bool[num_Node];
@@ -62,13 +65,16 @@ void Dijkstra::Dijkstra_init() {
 			}
 		}
 	}
-	Distance[start] = 0;
-	Cur_Path.add_Node(NodeInfo[0]);
-	Cur_Path.set_totalWeight(Distance[0]);
+	init_flag = true;
 }
 
-void Dijkstra::Dijkstra_run() {
-	CurNode = start;
+void Dijkstra::Dijkstra_run(int _start, int _end) {
+	end = _end;
+	CurNode = _start;
+	Distance[_start] = 0;
+	Cur_Path.add_Node(NodeInfo[0]);
+	Cur_Path.set_totalWeight(Distance[0]);
+
 	while (true) {
 		Min_Weight = HUGENUM;
 		for (int i = 0; i < num_Node; i++) {
@@ -103,7 +109,7 @@ void Dijkstra::Dijkstra_run() {
 	int total_Distance = Distance[end];
 	int vertex = end;
 
-	cout << start << " ~ " << end << endl;
+	cout << _start << " ~ " << end << endl;
 	cout << "최단거리 " << Distance[end] << endl;
 	Print_Path();
 }
