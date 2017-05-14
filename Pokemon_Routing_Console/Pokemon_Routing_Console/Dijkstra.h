@@ -25,7 +25,7 @@ private:
 	int end;
 
 	bool init_flag;
-
+	bool NoRouteFlag;
 public:
 	Dijkstra();
 	Dijkstra(int* _Matrix, int _num_node);
@@ -36,7 +36,7 @@ public:
 	void Set_NodeNum(int _num_Node);
 
 	void Dijkstra_init();	// 정점 초기화
-	void Dijkstra_run(int _start, int _end);	// 알고리즘 적용
+	int Dijkstra_run(int _start, int _end);	// 알고리즘 적용
 	void Print_Path();
 
 };

@@ -68,8 +68,10 @@ void Dijkstra::Dijkstra_init() {
 	init_flag = true;
 }
 
-void Dijkstra::Dijkstra_run(int _start, int _end) {
+int Dijkstra::Dijkstra_run(int _start, int _end) {
+	NoRouteFlag = true;
 	end = _end;
+	start = _start;
 	CurNode = _start;
 	Distance[_start] = 0;
 	Cur_Path.add_Node(NodeInfo[0]);
@@ -84,6 +86,7 @@ void Dijkstra::Dijkstra_run(int _start, int _end) {
 			if (CheckNode[i] == false && Distance[i] < Min_Weight) {
 				CurNode = i;
 				Min_Weight = Distance[i];
+				NoRouteFlag = false;
 			}
 		}
 
@@ -107,26 +110,36 @@ void Dijkstra::Dijkstra_run(int _start, int _end) {
 	}
 
 	int total_Distance = Distance[end];
+	if (Distance[end] < 0) {
+		Distance[end] = -1;
+	}
 	int vertex = end;
 
-	cout << _start << " ~ " << end << endl;
-	cout << "최단거리 " << Distance[end] << endl;
-	Print_Path();
+	//cout << _start << "에서	" << end <<  "까지 최단거리	" << Distance[end] << endl;
+	//Print_Path();
+	return total_Distance;
 }
 
 void Dijkstra::Print_Path() {
 	std::stack<int> path;
 	int vertex = end;
-	while (true) {
-		if (vertex == 0 || vertex == HUGENUM) {
+	bool flag = true;
+	if (history[vertex] < 0) {
+		cout << "No Route!!" << endl;
+		flag = false;
+	}
+	while (flag) {
+		if (vertex == start || vertex == HUGENUM) {
 			break;
 		}
 		path.push(vertex);
 		vertex = history[vertex];
 	}
+	cout << start << " ";
 	while (!path.empty()) {
 		cout << path.top();
 		cout << " ";
 		path.pop();
 	}
+	cout << endl << endl;
 }

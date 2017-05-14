@@ -123,6 +123,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="Graph_Matrix.h" />
+    <ClInclude Include="Headers.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="NodeLoca.h" />
     <ClInclude Include="Path.h" />
